@@ -56,6 +56,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
     master.disksize.size = '30GB'
     master.vm.synced_folder "./share_folder", "/share"
+	
+	master.vm.provision "shell", inline: <<-SHELL
+	  parted /dev/sda resizepart 1 100%
+	  pvresize /dev/sda1
+	  lvresize -rl +100%FREE /dev/mapper/vagrant--vg-root
+	SHELL
   end
   
   nodeCount.times do |i|
@@ -73,6 +79,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       end
 	  node.disksize.size = '30GB'
 	  node.vm.synced_folder "./share_folder", "/share"
+	  
+	  node.vm.provision "shell", inline: <<-SHELL
+	    parted /dev/sda resizepart 1 100%
+	    pvresize /dev/sda1
+	    lvresize -rl +100%FREE /dev/mapper/vagrant--vg-root
+	  SHELL
     end
+	
   end
 end
