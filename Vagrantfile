@@ -71,7 +71,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         v.name = node.vm.hostname.to_s
         v.memory = "#{managerRam}"
       end
-	  master.disksize.size = '30GB'
+	  node.disksize.size = '30GB'
 	  node.vm.synced_folder "./share_folder", "/share"
     end
   end
