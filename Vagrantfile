@@ -9,7 +9,7 @@ managerRam = 6144                     # Ram in MB for the Cludera Manager Node
 nodeRam = 4096                        # Ram in MB for each DataNode
 nodeCount = 3                         # Number of DataNodes to create
 privateNetworkIp = "10.10.51.5"       # Starting IP range for the private network between nodes
-resizeDisk = "40GB"                # Size in GB for the secondary virtual HDD
+resizeDisk = 40                       # Size in GB for the secondary virtual HDD
 
 # Do not edit below this line
 # --------------------------------------------------------------
@@ -54,10 +54,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	  v.name = "cdh-master"
 	  v.memory = "#{managerRam}"
     end
-    master.disksize.size = "#{resizeDisk}"
+    master.disksize.size = "#{resizeDisk}GB"
     master.vm.synced_folder "./share_folder", "/share"
 	
-	master.vm.provision :shell, :path => "shell_mount_disk.sh"
+	master.vm.provision :shell, :inline => "sh shell_mount_disk.sh #{resizeDisk - 10}"
 	master.vm.provision :shell, :inline => $hosts_data
 	master.vm.provision "shell", path: "shell_yum_install.sh"
 	
@@ -76,10 +76,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         v.name = node.vm.hostname.to_s
         v.memory = "#{managerRam}"
       end
-	  node.disksize.size = "#{resizeDisk}"
+	  node.disksize.size = "#{resizeDisk}GB"
 	  node.vm.synced_folder "./share_folder", "/share"
 	  
-	  node.vm.provision :shell, :path => "shell_mount_disk.sh"
+	  master.vm.provision :shell, :inline => "sh shell_mount_disk.sh #{resizeDisk - 10}"
 	  node.vm.provision :shell, :inline => $hosts_data
 	  node.vm.provision "shell", path: "shell_yum_install.sh"
     end

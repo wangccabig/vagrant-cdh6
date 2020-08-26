@@ -29,7 +29,7 @@ lsblk
 
 sudo pvcreate /dev/sda3
 sudo vgextend centos /dev/sda3
-sudo lvextend /dev/mapper/centos-root
+sudo lvextend -L ${1}GB /dev/mapper/centos-root
 sudo xfs_growfs /dev/centos/root
 #sudo resize2fs /dev/mapper/centos-root
 
