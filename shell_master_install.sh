@@ -46,7 +46,7 @@ EOF
 # set yum repo ---------------end---------------
 
 # set java home --------------start---------------
-sudo yum install -y oracle-j2sdk1.8-1.8.0
+sudo yum localinstall -y /var/www/html/cloudera-repos/oracle-j2sdk1.8-1.8.0+update141-1.x86_64.rpm
 cat >> /etc/profile <<EOF
 
 # JAVA_HOME
