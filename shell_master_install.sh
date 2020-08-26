@@ -54,6 +54,8 @@ export JAVA_HOME=/usr/java/jdk1.8.0_141-cloudera
 export PATH=$JAVA_HOME/bin:$PATH 
 export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar 
 EOF
+
+source /etc/profile
 # set java home --------------end---------------
 
 
