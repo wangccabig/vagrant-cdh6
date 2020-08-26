@@ -1,4 +1,5 @@
-set -e
+#!/bin/sh
+
 set -x
 
 if [ -f /etc/disk_added_date ]
