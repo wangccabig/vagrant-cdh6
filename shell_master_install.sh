@@ -5,7 +5,6 @@ set -x
 # set ntdp ------------------start------------------
 
 timedatectl set-ntp no
-timedatectl set-time "${1}"
 timedatectl set-timezone Asia/Shanghai
 date
 
