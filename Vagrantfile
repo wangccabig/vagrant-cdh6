@@ -61,6 +61,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	master.vm.provision "shell", inline: "/bin/sh /vagrant/shell_mount_disk.sh #{resizeDisk - 10}"
 	master.vm.provision "shell", inline: $hosts_data
 	master.vm.provision "shell", path: "shell_yum_install.sh"
+	master.vm.provision "shell", inline: "bin/sh /vagrant/shell_master_install.sh #{now}"
 	
   end
   
@@ -83,6 +84,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	  node.vm.provision "shell", inline: "/bin/sh /vagrant/shell_mount_disk.sh #{resizeDisk - 10}"
 	  node.vm.provision "shell", inline: $hosts_data
 	  node.vm.provision "shell", path: "shell_yum_install.sh"
+	  node.vm.provision "shell", path: "shell_node_install.sh"
     end
 	
   end
