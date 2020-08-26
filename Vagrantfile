@@ -9,7 +9,7 @@ managerRam = 6144                     # Ram in MB for the Cludera Manager Node
 nodeRam = 4096                        # Ram in MB for each DataNode
 nodeCount = 3                         # Number of DataNodes to create
 privateNetworkIp = "10.10.51.5"       # Starting IP range for the private network between nodes
-resizeDisk = 40GB                # Size in GB for the secondary virtual HDD
+resizeDisk = "40GB"                # Size in GB for the secondary virtual HDD
 
 # Do not edit below this line
 # --------------------------------------------------------------
