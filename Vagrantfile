@@ -57,32 +57,32 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     master.disksize.size = "#{resizeDisk}"
     master.vm.synced_folder "./share_folder", "/share"
 	
-	master.vm.provision :shell, :path => "shell_mount_disk.sh"
-	master.vm.provision :shell, :inline => $hosts_data
-	master.vm.provision "shell", path: "shell_yum_install.sh"
+	#master.vm.provision :shell, :path => "shell_mount_disk.sh"
+	#master.vm.provision :shell, :inline => $hosts_data
+	#master.vm.provision "shell", path: "shell_yum_install.sh"
 	
   end
   
-  nodeCount.times do |i|
-    id = i+1
-    config.vm.define "cdh-node#{id}" do |node|
-      node.vm.network :private_network, ip: "#{privateSubnet}.#{privateStartingIp + id}", :netmask => "255.255.255.0", virtualbox__intnet: "cdhnetwork"
-      node.vm.hostname = "cdh-node#{id}"
-	  
-      node.vm.provider "vmware_fusion" do |v|
-      v.vmx["memsize"]  = "#{nodeRam}"
-      end
-      node.vm.provider :virtualbox do |v|
-        v.name = node.vm.hostname.to_s
-        v.memory = "#{managerRam}"
-      end
-	  node.disksize.size = "#{resizeDisk}"
-	  node.vm.synced_folder "./share_folder", "/share"
-	  
-	  node.vm.provision :shell, :path => "shell_mount_disk.sh"
-	  node.vm.provision :shell, :inline => $hosts_data
-	  node.vm.provision "shell", path: "shell_yum_install.sh"
-    end
-	
-  end
+  #nodeCount.times do |i|
+  #  id = i+1
+  #  config.vm.define "cdh-node#{id}" do |node|
+  #    node.vm.network :private_network, ip: "#{privateSubnet}.#{privateStartingIp + id}", :netmask => "255.255.255.0", virtualbox__intnet: "cdhnetwork"
+  #    node.vm.hostname = "cdh-node#{id}"
+	#  
+  #    node.vm.provider "vmware_fusion" do |v|
+  #    v.vmx["memsize"]  = "#{nodeRam}"
+  #    end
+  #    node.vm.provider :virtualbox do |v|
+  #      v.name = node.vm.hostname.to_s
+  #      v.memory = "#{managerRam}"
+  #    end
+	#  node.disksize.size = "#{resizeDisk}"
+	#  node.vm.synced_folder "./share_folder", "/share"
+	#  
+	#  node.vm.provision :shell, :path => "shell_mount_disk.sh"
+	#  node.vm.provision :shell, :inline => $hosts_data
+	#  node.vm.provision "shell", path: "shell_yum_install.sh"
+  #  end
+	#
+  #end
 end
