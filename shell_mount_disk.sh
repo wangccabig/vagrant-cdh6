@@ -19,6 +19,8 @@ p
 w
 EOF
 
+sleep 3
+
 sudo partprobe
 
 # show disk partition info
