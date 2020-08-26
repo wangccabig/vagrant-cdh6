@@ -79,7 +79,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	  node.disksize.size = "#{resizeDisk}GB"
 	  node.vm.synced_folder "./share_folder", "/share"
 	  
-	  node.vm.provision :shell, :inline => "sh shell_mount_disk.sh #{resizeDisk - 10}"
+	  node.vm.provision :shell, :inline => "/bin/sh shell_mount_disk.sh #{resizeDisk - 10}"
 	  node.vm.provision :shell, :inline => $hosts_data
 	  node.vm.provision "shell", path: "shell_yum_install.sh"
     end
