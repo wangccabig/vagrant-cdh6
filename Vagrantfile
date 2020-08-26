@@ -10,6 +10,7 @@ nodeRam = 4096                        # Ram in MB for each DataNode
 nodeCount = 3                         # Number of DataNodes to create
 privateNetworkIp = "10.10.51.5"       # Starting IP range for the private network between nodes
 resizeDisk = 40                       # Size in GB for the secondary virtual HDD
+now = Time.now.strftime("%Y-%m-%d %H:%M:%S")  # now
 
 # Do not edit below this line
 # --------------------------------------------------------------
@@ -57,8 +58,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     master.disksize.size = "#{resizeDisk}GB"
     master.vm.synced_folder "./share_folder", "/share"
 	
-	master.vm.provision :shell, :inline => "/bin/sh /vagrant/shell_mount_disk.sh #{resizeDisk - 10}"
-	master.vm.provision :shell, :inline => $hosts_data
+	master.vm.provision "shell", inline => "/bin/sh /vagrant/shell_mount_disk.sh #{resizeDisk - 10}"
+	master.vm.provision "shell", inline => $hosts_data
 	master.vm.provision "shell", path: "shell_yum_install.sh"
 	
   end
@@ -79,8 +80,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	  node.disksize.size = "#{resizeDisk}GB"
 	  node.vm.synced_folder "./share_folder", "/share"
 	  
-	  node.vm.provision :shell, :inline => "/bin/sh /vagrant/shell_mount_disk.sh #{resizeDisk - 10}"
-	  node.vm.provision :shell, :inline => $hosts_data
+	  node.vm.provision "shell", inline => "/bin/sh /vagrant/shell_mount_disk.sh #{resizeDisk - 10}"
+	  node.vm.provision "shell", inline => $hosts_data
 	  node.vm.provision "shell", path: "shell_yum_install.sh"
     end
 	
