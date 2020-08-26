@@ -125,8 +125,6 @@ EOF
 
 # create db
 systemctl start mysqld
-pswLine = grep 'temporary password' /var/log/mysqld.log
-psw = ${pswLine#*:}
 mysql -uroot < /share/init_db.sql
 
 
