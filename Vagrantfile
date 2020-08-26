@@ -57,7 +57,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     master.disksize.size = "#{resizeDisk}"
     master.vm.synced_folder "./share_folder", "/share"
 	
-	#master.vm.provision :shell, :path => "shell_mount_disk.sh"
+	master.vm.provision :shell, :path => "shell_mount_disk.sh"
 	#master.vm.provision :shell, :inline => $hosts_data
 	#master.vm.provision "shell", path: "shell_yum_install.sh"
 	
