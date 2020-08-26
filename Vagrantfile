@@ -58,10 +58,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     master.vm.synced_folder "./share_folder", "/share"
 	
 	master.vm.provision "shell", inline: <<-SHELL
-	  parted /dev/sda resizepart 1 100%
-	  pvresize /dev/sda1
-	  lvresize -rl +100%FREE /dev/mapper/vagrant--vg-root
+	  echo "start exec shell ==========================="
 	SHELL
+	
+	master.vm.provision "shell", path: "shell_yum_install.sh"
+	
   end
   
   nodeCount.times do |i|
@@ -81,9 +82,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	  node.vm.synced_folder "./share_folder", "/share"
 	  
 	  node.vm.provision "shell", inline: <<-SHELL
-	    parted /dev/sda resizepart 1 100%
-	    pvresize /dev/sda1
-	    lvresize -rl +100%FREE /dev/mapper/vagrant--vg-root
+	    echo "start exec shell ==========================="
 	  SHELL
     end
 	
