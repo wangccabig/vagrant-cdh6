@@ -48,11 +48,12 @@ EOF
 # install mysql server---------start------------
 
 yum remove -y mariadb*
-cd 
+#cd 
 wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
 yum localinstall -y mysql-community-release-el7-5.noarch.rpm
 sed -i "s/http/https/g" /etc/yum.repos.d/mysql-community.repo
 yum install -y mysql-server
+#rpm -Uvh /share/mysql/*.rpm --nodeps --force
 
 cat > /etc/my.cnf <<EOF
 [mysqld]

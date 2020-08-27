@@ -11,7 +11,6 @@ systemctl disable firewalld 	# 禁用防火墙
 
 yum install -y ntp ntpdate
 
-
 # set java home --------------start---------------
 yum localinstall -y /share/cloudera-repos/oracle-j2sdk1.8-1.8.0+update141-1.x86_64.rpm
 cat >> /etc/profile <<EOF
