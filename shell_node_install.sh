@@ -12,6 +12,5 @@ ntpdate -u cdh-master
 service ntpd restart
 systemctl disable chronyd.service
 systemctl enable ntpd.service
-ntpstat
 
 # set ntdp ------------------end------------------
