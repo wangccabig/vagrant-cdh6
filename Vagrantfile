@@ -51,7 +51,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     master.vm.hostname = "cdh-master"
 
 
-    master.vm.provider "vmware_fusion" do |v|
+    master.vm.provider "virtualbox" do |v|
 	  v.name = "cdh-master"
 	  v.memory = "#{managerRam}"
     end
@@ -71,12 +71,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       node.vm.network :private_network, ip: "#{privateSubnet}.#{privateStartingIp + id}", :netmask => "255.255.255.0", virtualbox__intnet: "cdhnetwork"
       node.vm.hostname = "cdh-node#{id}"
 	  
-      node.vm.provider "vmware_fusion" do |v|
-      v.vmx["memsize"]  = "#{nodeRam}"
-      end
-      node.vm.provider :virtualbox do |v|
+      node.vm.provider "virtualbox" do |v|
         v.name = node.vm.hostname.to_s
-        v.memory = "#{managerRam}"
+        v.memory = "#{nodeRam}"
       end
 	  node.disksize.size = "#{resizeDisk}GB"
 	  node.vm.synced_folder "./share_folder", "/share"

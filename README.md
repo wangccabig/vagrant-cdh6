@@ -24,7 +24,7 @@ sudo tail -f /var/log/cloudera-scm-server/cloudera-scm-server.log
 
 ## 四、宿主机执行命令
 ```shell
-ssh -CfNg -L 7180:192.168.12.57:7180 vagrant@192.168.12.57
+ssh -CfNg -L 7180:cdh-master-ip:7180 vagrant@cdh-master-ip
 >>输入密码vagrant
 ```
 

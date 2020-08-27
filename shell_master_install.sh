@@ -136,3 +136,5 @@ cp /share/mysql-connector-java-5.1.47-bin.jar /usr/share/java/mysql-connector-ja
 /opt/cloudera/cm/schema/scm_prepare_database.sh mysql oozie oozie 'MyNewPass4!.'
 
 # config cdh agent   --------- end ------------
+
+systemctl start cloudera-scm-server
