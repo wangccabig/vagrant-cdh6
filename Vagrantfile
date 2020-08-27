@@ -10,7 +10,6 @@ nodeRam = 4096                        # Ram in MB for each DataNode
 nodeCount = 3                         # Number of DataNodes to create
 privateNetworkIp = "10.10.51.5"       # Starting IP range for the private network between nodes
 resizeDisk = 40                       # Size in GB for the secondary virtual HDD
-now = Time.now.strftime("%Y-%m-%d %H:%M:%S")  # now
 
 # Do not edit below this line
 # --------------------------------------------------------------
