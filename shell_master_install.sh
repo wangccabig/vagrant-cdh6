@@ -132,4 +132,20 @@ mysql -uroot < /share/init_db.sql
 
 # install mysql server--------- end ------------
 
+# config cdh agent   --------- start ------------
 sudo yum install -y cloudera-manager-daemons cloudera-manager-agent cloudera-manager-server
+
+mkdir -p /usr/share/java/
+cp /share/mysql-connector-java-5.1.47-bin.jar /usr/share/java/mysql-connector-java.jar
+
+/opt/cloudera/cm/schema/scm_prepare_database.sh mysql scm scm 'MyNewPass4!.'
+/opt/cloudera/cm/schema/scm_prepare_database.sh mysql amon amon 'MyNewPass4!.'
+/opt/cloudera/cm/schema/scm_prepare_database.sh mysql rman rman 'MyNewPass4!.'
+/opt/cloudera/cm/schema/scm_prepare_database.sh mysql hue hue 'MyNewPass4!.'
+/opt/cloudera/cm/schema/scm_prepare_database.sh mysql metastore metastore 'MyNewPass4!.'
+/opt/cloudera/cm/schema/scm_prepare_database.sh mysql sentry sentry 'MyNewPass4!.'
+/opt/cloudera/cm/schema/scm_prepare_database.sh mysql nav nav 'MyNewPass4!.'
+/opt/cloudera/cm/schema/scm_prepare_database.sh mysql navms navms 'MyNewPass4!.'
+/opt/cloudera/cm/schema/scm_prepare_database.sh mysql oozie oozie 'MyNewPass4!.'
+
+# config cdh agent   --------- end ------------

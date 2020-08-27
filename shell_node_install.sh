@@ -15,9 +15,3 @@ systemctl enable ntpd.service			# 开机启动
 ntpstat									# 查看同步状态
 
 # set ntdp ------------------end------------------
-
-# set yum repo ---------------start---------------
-
-
-
-# set yum repo --------------- end ---------------
