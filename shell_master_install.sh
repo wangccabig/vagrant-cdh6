@@ -134,7 +134,14 @@ cp /share/mysql-connector-java-5.1.47-bin.jar /usr/share/java/mysql-connector-ja
 /opt/cloudera/cm/schema/scm_prepare_database.sh mysql nav nav 'MyNewPass4!.'
 /opt/cloudera/cm/schema/scm_prepare_database.sh mysql navms navms 'MyNewPass4!.'
 /opt/cloudera/cm/schema/scm_prepare_database.sh mysql oozie oozie 'MyNewPass4!.'
+/opt/cloudera/cm/schema/scm_prepare_database.sh mysql hive hive 'MyNewPass4!.'
 
 # config cdh agent   --------- end ------------
 
 systemctl start cloudera-scm-server
+
+
+sysctl vm.swappiness=10
+echo 'vm.swappiness=10' >> /etc/sysctl.conf
+echo never > /sys/kernel/mm/transparent_hugepage/defrag
+echo never > /sys/kernel/mm/transparent_hugepage/enabled
