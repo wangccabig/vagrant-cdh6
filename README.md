@@ -12,6 +12,7 @@ vagrant plugin install vagrant-disksize
 ## 二、启动虚拟机
 ```shell
 vagrant up
+选择网络配置1
 ```
 
 ## 三、进入cdh-master节点查看日志
