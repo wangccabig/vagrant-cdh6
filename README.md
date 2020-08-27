@@ -1,5 +1,9 @@
 # vagrant-cdh6
 
+## 版本
+- VitrualBox 6.1.12r139181
+- Vagrant 2.2.9
+
 ## 一、安装vagrant插件
 ```shell
 vagrant plugin install vagrant-disksize
